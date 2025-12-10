@@ -1,0 +1,22 @@
+{
+  "name": "monitoring-dashboard",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "dependencies": {
+    "@cap-js/hana": "^2",
+    "@sap/cds": "^9",
+    "express": "^4"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^2",
+    "@sap/cds-dk": "^9"
+  },
+  "scripts": {
+    "start": "cds-serve",
+    "build:react": "cd app/react && npm ci && npm run build",
+    "build:cap": "npx cds build --production",
+    "prepare-deploy": "npm run build:react && npm run build:cap && node scripts/copy-react-dist.js"
+  },
+  "private": true,
+  "cds": {}
+}
