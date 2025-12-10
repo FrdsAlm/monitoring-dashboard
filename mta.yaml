@@ -1,31 +1,39 @@
 _schema-version: 3.3.0
 ID: monitoring-dashboard
 version: 1.0.0
-description: "A simple CAP project."
+description: "GPS Central Monitoring Dashboard - CAP + React"
 parameters:
   enable-parallel-deployments: true
+
 build-parameters:
   before-all:
     - builder: custom
       commands:
         - npm ci
+        - cd app/react && npm ci && npm run build
         - npx cds build --production
+        - node scripts/copy-react-dist.js
+
 modules:
+  # CAP Backend Service
   - name: monitoring-dashboard-srv
     type: nodejs
     path: gen/srv
     parameters:
       instances: 1
+      memory: 256M
+      disk-quota: 512M
       buildpack: nodejs_buildpack
     build-parameters:
       builder: npm-ci
     provides:
-      - name: srv-api # required by consumers of CAP services (e.g. approuter)
+      - name: srv-api
         properties:
           srv-url: ${default-url}
     requires:
       - name: monitoring-dashboard-db
 
+  # HANA Database Deployer
   - name: monitoring-dashboard-db-deployer
     type: hdb
     path: gen/db
@@ -34,7 +42,28 @@ modules:
     requires:
       - name: monitoring-dashboard-db
 
+  # Static UI Content (Approuter)
+  - name: monitoring-dashboard-app
+    type: approuter.nodejs
+    path: app
+    parameters:
+      instances: 1
+      memory: 128M
+      disk-quota: 256M
+    build-parameters:
+      builder: npm
+      ignore:
+        - react/
+    requires:
+      - name: srv-api
+        group: destinations
+        properties:
+          name: srv-api
+          url: ~{srv-url}
+          forwardAuthToken: true
+
 resources:
+  # HANA HDI Container
   - name: monitoring-dashboard-db
     type: com.sap.xs.hdi-container
     parameters:

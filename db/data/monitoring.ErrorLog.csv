@@ -1,0 +1,8 @@
+ID;timestamp;level;message;description;source;details
+9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d;2025-12-10T10:00:00Z;ERROR;Database connection failed;Could not connect to the primary DB instance;DatabaseService;Connection timeout waiting for 10.0.0.5
+2b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6e;2025-12-10T10:05:00Z;WARN;High memory usage;Memory usage at 85%;MonitoringAgent;Heap size exceeds threshold
+1b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6f;2025-12-09T10:10:00Z;INFO;Daily backup completed;Backup saved to S3 bucket;BackupService;Size: 45GB
+8b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6g;2025-12-08T09:15:00Z;ERROR;Payment gateway timeout;Gateway API did not respond in 30s;PaymentService;TransactionID: 123456
+7b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6h;2025-12-08T11:20:00Z;ERROR;Invalid login attempt;User failed auth 5 times;AuthService;IP: 192.168.1.10
+6b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6i;2025-12-07T14:30:00Z;WARN;Disk space low;Free space < 10GB;FileSystem;Volume: /var/log
+5b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6j;2025-12-06T16:45:00Z;INFO;User created;New user registration;UserService;User: john_doe

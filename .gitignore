@@ -32,3 +32,10 @@ mta_archives/
 
 # @cap-js/cds-typer
 @cds-models
+
+# React build output (copied to app/ during deploy)
+app/react/dist/
+app/assets/
+app/index.html
+app/*.js
+app/*.css
