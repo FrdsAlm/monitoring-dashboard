@@ -10,7 +10,7 @@ build-parameters:
     - builder: custom
       commands:
         - npm ci
-        - cd app/react && npm ci && npm run build
+        - bash -c "cd app/react && npm ci && npm run build"
         - npx cds build --production
         - node scripts/copy-react-dist.js
 
