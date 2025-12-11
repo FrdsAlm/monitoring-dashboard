@@ -18,5 +18,13 @@
     "prepare-deploy": "npm run build:react && npm run build:cap && node scripts/copy-react-dist.js"
   },
   "private": true,
-  "cds": {}
+  "cds": {
+    "requires": {
+      "[production]": {
+        "auth": {
+          "kind": "dummy"
+        }
+      }
+    }
+  }
 }
