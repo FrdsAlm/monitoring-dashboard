@@ -1,8 +1,8 @@
 ID;timestamp;level;message;description;source;details
-9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d;2025-12-10T10:00:00Z;ERROR;Database connection failed;Could not connect to the primary DB instance;DatabaseService;Connection timeout waiting for 10.0.0.5
-2b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6e;2025-12-10T10:05:00Z;WARN;High memory usage;Memory usage at 85%;MonitoringAgent;Heap size exceeds threshold
-1b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6f;2025-12-09T10:10:00Z;INFO;Daily backup completed;Backup saved to S3 bucket;BackupService;Size: 45GB
-8b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6g;2025-12-08T09:15:00Z;ERROR;Payment gateway timeout;Gateway API did not respond in 30s;PaymentService;TransactionID: 123456
-7b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6h;2025-12-08T11:20:00Z;ERROR;Invalid login attempt;User failed auth 5 times;AuthService;IP: 192.168.1.10
-6b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6i;2025-12-07T14:30:00Z;WARN;Disk space low;Free space < 10GB;FileSystem;Volume: /var/log
-5b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6j;2025-12-06T16:45:00Z;INFO;User created;New user registration;UserService;User: john_doe
+a1b2c3d4-e5f6-7890-abcd-ef1234567890;2025-12-10T10:30:00Z;ERROR;Database connection failed;Unable to connect to primary database server;MonitoringService;Connection timeout after 30 seconds
+b2c3d4e5-f6a7-8901-bcde-f12345678901;2025-12-10T09:15:00Z;WARN;High memory usage detected;Memory usage exceeded 85% threshold;SystemMonitor;Current usage: 87%
+c3d4e5f6-a7b8-9012-cdef-123456789012;2025-12-09T14:22:00Z;INFO;Scheduled maintenance completed;Weekly backup and cleanup finished;BackupService;Duration: 45 minutes
+d4e5f6a7-b8c9-0123-defa-234567890123;2025-12-09T11:05:00Z;ERROR;API rate limit exceeded;External API calls blocked temporarily;IntegrationHub;Retry after: 60 seconds
+e5f6a7b8-c9d0-1234-efab-345678901234;2025-12-08T16:45:00Z;WARN;SSL certificate expiring soon;Certificate will expire in 7 days;SecurityGateway;Domain: api.example.com
+f6a7b8c9-d0e1-2345-fabc-456789012345;2025-12-08T08:30:00Z;INFO;New user registered;User registration successful;UserService;UserID: usr_12345
+a7b8c9d0-e1f2-3456-abcd-567890123456;2025-12-07T12:00:00Z;ERROR;Payment processing failed;Transaction declined by payment gateway;PaymentService;Error code: CARD_DECLINED

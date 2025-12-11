@@ -11,8 +11,8 @@ build-parameters:
       commands:
         - npm ci
         - bash -c "cd app/react && npm ci && npm run build"
-        - bash -c "mkdir -p app/webapp && cp -r app/react/dist/* app/webapp/"
         - npx cds build --production
+        - bash -c "mkdir -p gen/srv/app && cp -r app/react/dist/* gen/srv/app/"
 
 modules:
   # CAP Backend Service (serves both API and static UI)

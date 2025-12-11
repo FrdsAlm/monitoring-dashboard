@@ -1,3 +1,0 @@
-ID,timestamp,level,message,description,source,details
-ac279fff-ec12-47e7-87f8-31427bdef09c,2025-12-09T10:00:00Z,ERROR,Sample error 1,First sample error,unit-test,
-18866e48-d445-430f-8805-5989b35fae9b,2025-12-09T11:30:00Z,WARN,Sample warning,Second sample entry,unit-test,
