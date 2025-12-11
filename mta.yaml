@@ -12,7 +12,6 @@ build-parameters:
         - npm ci
         - bash -c "cd app/react && npm ci && npm run build"
         - npx cds build --production
-        - node scripts/copy-react-dist.js
 
 modules:
   # CAP Backend Service
@@ -45,15 +44,15 @@ modules:
   # Static UI Content (Approuter)
   - name: monitoring-dashboard-app
     type: approuter.nodejs
-    path: app
+    path: app/react/dist
     parameters:
       instances: 1
       memory: 128M
       disk-quota: 256M
     build-parameters:
-      builder: npm
-      ignore:
-        - react/
+      builder: custom
+      commands:
+        - bash -c "cp ../package.json . && cp ../xs-app.json . && npm ci"
     requires:
       - name: srv-api
         group: destinations
