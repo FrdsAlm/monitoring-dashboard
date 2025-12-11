@@ -7,12 +7,16 @@ cds.on('bootstrap', app => {
     const appDir = path.join(__dirname, 'app');
     app.use('/', express.static(appDir));
 
-    // SPA fallback - serve index.html for non-API routes
+    // SPA fallback - serve index.html for client-side routes
     app.get('*', (req, res, next) => {
-        // Skip API routes
-        if (req.path.startsWith('/error-service') || req.path.startsWith('/$')) {
+        // Skip API routes and OData metadata
+        if (req.path.startsWith('/error-service') ||
+            req.path.startsWith('/$') ||
+            req.path.startsWith('/@') ||
+            req.path.includes('.')) {
             return next();
         }
+        // Serve index.html for all other routes (SPA routing)
         res.sendFile(path.join(appDir, 'index.html'));
     });
 });
