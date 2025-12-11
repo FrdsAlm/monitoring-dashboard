@@ -50,9 +50,7 @@ modules:
       memory: 128M
       disk-quota: 256M
     build-parameters:
-      builder: custom
-      commands:
-        - bash -c "cp ../../app/package.json . && cp ../../app/xs-app.json . && npm ci"
+      builder: npm
     requires:
       - name: srv-api
         group: destinations
