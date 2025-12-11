@@ -1,12 +1,32 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import { copyFileSync, mkdirSync, existsSync } from 'fs'
+import { resolve, dirname } from 'path'
+
+// Plugin to copy approuter files to dist after build
+const copyApprouterFiles = () => ({
+  name: 'copy-approuter-files',
+  closeBundle() {
+    const distDir = resolve(__dirname, 'dist')
+    const appDir = resolve(__dirname, '..')
+
+    // Ensure dist exists
+    if (!existsSync(distDir)) {
+      mkdirSync(distDir, { recursive: true })
+    }
+
+    // Copy approuter configuration files
+    copyFileSync(resolve(appDir, 'package.json'), resolve(distDir, 'package.json'))
+    copyFileSync(resolve(appDir, 'xs-app.json'), resolve(distDir, 'xs-app.json'))
+    console.log('Copied approuter files to dist/')
+  }
+})
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), copyApprouterFiles()],
   server: {
     port: 5173,
     proxy: {
-      // proxy API calls to the CAP backend running on 4004
       '/error-service': 'http://localhost:4004'
     }
   }
