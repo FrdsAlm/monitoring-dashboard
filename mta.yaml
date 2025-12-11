@@ -52,7 +52,7 @@ modules:
     build-parameters:
       builder: custom
       commands:
-        - bash -c "cp ../package.json . && cp ../xs-app.json . && npm ci"
+        - bash -c "cp ../../app/package.json . && cp ../../app/xs-app.json . && npm ci"
     requires:
       - name: srv-api
         group: destinations
