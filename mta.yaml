@@ -11,10 +11,11 @@ build-parameters:
       commands:
         - npm ci
         - bash -c "cd app/react && npm ci && npm run build"
+        - bash -c "mkdir -p app/webapp && cp -r app/react/dist/* app/webapp/"
         - npx cds build --production
 
 modules:
-  # CAP Backend Service
+  # CAP Backend Service (serves both API and static UI)
   - name: monitoring-dashboard-srv
     type: nodejs
     path: gen/srv
@@ -40,24 +41,6 @@ modules:
       buildpack: nodejs_buildpack
     requires:
       - name: monitoring-dashboard-db
-
-  # Static UI Content (Approuter)
-  - name: monitoring-dashboard-app
-    type: approuter.nodejs
-    path: app/react/dist
-    parameters:
-      instances: 1
-      memory: 128M
-      disk-quota: 256M
-    build-parameters:
-      builder: npm
-    requires:
-      - name: srv-api
-        group: destinations
-        properties:
-          name: srv-api
-          url: ~{srv-url}
-          forwardAuthToken: true
 
 resources:
   # HANA HDI Container

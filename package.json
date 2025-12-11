@@ -25,6 +25,9 @@
           "kind": "dummy"
         }
       }
+    },
+    "folders": {
+      "app": "app/webapp"
     }
   }
 }
