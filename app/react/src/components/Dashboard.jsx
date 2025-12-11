@@ -33,11 +33,17 @@ export default function Dashboard() {
   const [q, setQ] = useState('')
   const [sortBy, setSortBy] = useState('timestamp')
   const [sortDir, setSortDir] = useState('desc')
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
-    loadTable();
-    loadWeek();
+    refreshAll();
   }, [])
+
+  async function refreshAll() {
+    setIsLoading(true)
+    await Promise.all([loadTable(), loadWeek()])
+    setIsLoading(false)
+  }
 
   async function loadTable() {
     const data = await fetchLogs('?%24top=100&%24orderby=timestamp%20desc')
@@ -136,8 +142,8 @@ export default function Dashboard() {
             <option value="asc">Asc</option>
           </select>
         </label>
-        <button className="refresh-btn" onClick={loadTable}>
-          ↻ Refresh
+        <button className="refresh-btn" onClick={refreshAll} disabled={isLoading}>
+          {isLoading ? '⟳ Loading...' : '↻ Refresh'}
         </button>
       </div>
 
