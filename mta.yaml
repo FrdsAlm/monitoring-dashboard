@@ -12,6 +12,8 @@ build-parameters:
         - npm ci
         - bash -c "cd app/react && npm ci && npm run build"
         - npx cds build --production
+        - bash -c "mkdir -p gen/srv/app && cp -r app/react/dist/* gen/srv/app/"
+        - bash -c "cp srv/server.js gen/srv/"
 
 modules:
   # CAP Backend Service (serves both API and static UI)
@@ -24,10 +26,7 @@ modules:
       disk-quota: 512M
       buildpack: nodejs_buildpack
     build-parameters:
-      builder: custom
-      commands:
-        - npm ci --production
-        - bash -c "mkdir -p app && cp -r ../../app/react/dist/* app/"
+      builder: npm
     provides:
       - name: srv-api
         properties:
