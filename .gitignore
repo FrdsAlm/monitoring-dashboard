@@ -33,7 +33,7 @@ mta_archives/
 # @cap-js/cds-typer
 @cds-models
 
-# React build output (copied to app/ during deploy)
+# React dist folder (build output copied here)
 app/react/dist/
 app/assets/
 app/index.html
