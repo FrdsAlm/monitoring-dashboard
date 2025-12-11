@@ -1,0 +1,8 @@
+ID,interfaceCode,displayName,sourceSystem,direction,frequency,owner,criticality,description,isActive
+660e8400-e29b-41d4-a716-446655440001,CPI_PO_CREATE,Purchase Order Creation,CPI,OUTBOUND,REALTIME,AMS-Integration,HIGH,Creates POs in Ivalua from SAP,true
+660e8400-e29b-41d4-a716-446655440002,CPI_CONTRACT_SYNC,Contract Synchronization,CPI,BIDIRECTIONAL,HOURLY,AMS-Integration,HIGH,Syncs contracts between SAP and Ivalua,true
+660e8400-e29b-41d4-a716-446655440003,CPI_INVOICE_BATCH,Invoice Batch Processing,CPI,OUTBOUND,DAILY,AMS-Integration,MEDIUM,Daily batch of invoices to Ivalua,true
+660e8400-e29b-41d4-a716-446655440004,MULE_PR_CREATE,PR Creation via MuleSoft,MULESOFT,OUTBOUND,REALTIME,AMS-MuleSoft,HIGH,Creates PRs from external systems,true
+660e8400-e29b-41d4-a716-446655440005,MULE_SUPPLIER_SYNC,Supplier Master Sync,MULESOFT,INBOUND,DAILY,AMS-MuleSoft,MEDIUM,Syncs supplier data from MDM,true
+660e8400-e29b-41d4-a716-446655440006,IVALUA_ETL_SYNC,Daily ETL Sync,IVALUA,BIDIRECTIONAL,DAILY,AMS-Ivalua,HIGH,Internal Ivalua data synchronization,true
+660e8400-e29b-41d4-a716-446655440007,IVALUA_CONTRACT_EXPORT,Contract Export,IVALUA,OUTBOUND,ON_DEMAND,AMS-Ivalua,LOW,Ad-hoc contract exports for reporting,true

@@ -1,8 +1,0 @@
-ID;timestamp;level;message;description;source;details
-a1b2c3d4-e5f6-7890-abcd-ef1234567890;2025-12-10T10:30:00Z;ERROR;Database connection failed;Unable to connect to primary database server;MonitoringService;Connection timeout after 30 seconds
-b2c3d4e5-f6a7-8901-bcde-f12345678901;2025-12-10T09:15:00Z;WARN;High memory usage detected;Memory usage exceeded 85% threshold;SystemMonitor;Current usage: 87%
-c3d4e5f6-a7b8-9012-cdef-123456789012;2025-12-09T14:22:00Z;INFO;Scheduled maintenance completed;Weekly backup and cleanup finished;BackupService;Duration: 45 minutes
-d4e5f6a7-b8c9-0123-defa-234567890123;2025-12-09T11:05:00Z;ERROR;API rate limit exceeded;External API calls blocked temporarily;IntegrationHub;Retry after: 60 seconds
-e5f6a7b8-c9d0-1234-efab-345678901234;2025-12-08T16:45:00Z;WARN;SSL certificate expiring soon;Certificate will expire in 7 days;SecurityGateway;Domain: api.example.com
-f6a7b8c9-d0e1-2345-fabc-456789012345;2025-12-08T08:30:00Z;INFO;New user registered;User registration successful;UserService;UserID: usr_12345
-a7b8c9d0-e1f2-3456-abcd-567890123456;2025-12-07T12:00:00Z;ERROR;Payment processing failed;Transaction declined by payment gateway;PaymentService;Error code: CARD_DECLINED

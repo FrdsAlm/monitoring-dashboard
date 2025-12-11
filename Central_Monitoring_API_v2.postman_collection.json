@@ -1,0 +1,200 @@
+{
+    "info": {
+        "_postman_id": "monitoring-dashboard-api-v2",
+        "name": "Central Monitoring Dashboard API v2",
+        "description": "API collection for the Central Integration Monitoring Dashboard",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "variable": [
+        {
+            "key": "baseUrl",
+            "value": "https://54a097c8trial-dev-monitoring-dashboard-srv.cfapps.us10-001.hana.ondemand.com",
+            "type": "string"
+        },
+        {
+            "key": "localUrl",
+            "value": "http://localhost:4004",
+            "type": "string"
+        }
+    ],
+    "item": [
+        {
+            "name": "Interface Logs",
+            "item": [
+                {
+                    "name": "Get All Interface Logs",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/monitoring/InterfaceLogs",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "monitoring",
+                                "InterfaceLogs"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Logs - Latest 20",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/monitoring/InterfaceLogs?$top=20&$orderby=timestamp desc",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "monitoring",
+                                "InterfaceLogs"
+                            ],
+                            "query": [
+                                {
+                                    "key": "$top",
+                                    "value": "20"
+                                },
+                                {
+                                    "key": "$orderby",
+                                    "value": "timestamp desc"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "POST - From SAP CPI (Full)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"sourceSystem\": \"CPI\",\n  \"sourceComponent\": \"PO_Outbound_iFlow\",\n  \"level\": \"ERROR\",\n  \"message\": \"HTTP 500 from Ivalua\",\n  \"timestamp\": \"{{$isoTimestamp}}\",\n  \"interfaceName\": \"PO_CREATE\",\n  \"correlationId\": \"{{$guid}}\",\n  \"businessDocId\": \"4500001234\",\n  \"businessDocType\": \"PO\",\n  \"status\": \"FAILED\",\n  \"httpStatusCode\": 500\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/monitoring/InterfaceLogs",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "monitoring",
+                                "InterfaceLogs"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "POST - From Ivalua (Minimal)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"sourceSystem\": \"IVALUA\",\n  \"level\": \"ERROR\",\n  \"message\": \"ETL job Daily_PO_Sync failed\",\n  \"timestamp\": \"{{$isoTimestamp}}\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/monitoring/InterfaceLogs",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "monitoring",
+                                "InterfaceLogs"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Procurement Stats",
+            "item": [
+                {
+                    "name": "Get All Stats",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/monitoring/ProcurementStats",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "monitoring",
+                                "ProcurementStats"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "POST - Daily Stats",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"timestamp\": \"{{$isoTimestamp}}\",\n  \"statType\": \"PO_COUNT\",\n  \"period\": \"DAILY\",\n  \"value\": 145,\n  \"previousValue\": 125,\n  \"sourceSystem\": \"IVALUA\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/api/monitoring/ProcurementStats",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "monitoring",
+                                "ProcurementStats"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "System Health",
+            "item": [
+                {
+                    "name": "Get All System Health",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{baseUrl}}/api/monitoring/SystemHealth",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "api",
+                                "monitoring",
+                                "SystemHealth"
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}
