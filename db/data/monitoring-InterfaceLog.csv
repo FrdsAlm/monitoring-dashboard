@@ -16,7 +16,7 @@ ID,timestamp,sourceSystem,sourceComponent,level,message,description,interfaceNam
 550e8400-e29b-41d4-a716-446655440025,2025-12-11T14:00:00Z,MULESOFT,catalog-sync-app,INFO,Catalog sync,Synced 500 catalog items,CATALOG_SYNC,corr-025-pqr,,CATALOG,SUCCESS,,,count:500,0,,
 550e8400-e29b-41d4-a716-446655440026,2025-12-11T12:30:00Z,MULESOFT,ivalua-integration-app,INFO,PR created,PR 1000005681 created,PR_CREATE,corr-026-stu,1000005681,PR,SUCCESS,,,status:ok,0,,
 550e8400-e29b-41d4-a716-446655440027,2025-12-11T10:00:00Z,MULESOFT,supplier-sync-app,INFO,Supplier sync,Synced 75 suppliers,SUPPLIER_SYNC,corr-027-vwx,,SUPPLIER,SUCCESS,,,count:75,0,,
-550e8400-e29b-41d4-a716-446655440040,2025-12-11T18:15:00Z,IVALUA,ETL_Daily_Sync,ERROR,ETL job failed,Daily sync job failed due to database lock,ETL_SYNC,,,,,FAILED,DB_ERROR,,Deadlock detected,0,
+550e8400-e29b-41d4-a716-446655440040,2025-12-11T18:15:00Z,IVALUA,ETL_Daily_Sync,ERROR,ETL job failed,Daily sync job failed due to database lock,ETL_SYNC,,,,FAILED,DB_ERROR,,Deadlock detected,0,,
 550e8400-e29b-41d4-a716-446655440041,2025-12-11T16:00:00Z,IVALUA,EAI_Contract_Export,INFO,Export completed,Exported 500 contracts to SAP,CONTRACT_EXPORT,,,CONTRACT,SUCCESS,,,count:500,0,,
 550e8400-e29b-41d4-a716-446655440042,2025-12-11T14:00:00Z,IVALUA,ETL_Supplier_Import,INFO,Import completed,Imported 200 suppliers,SUPPLIER_IMPORT,,,SUPPLIER,SUCCESS,,,count:200,0,,
 550e8400-e29b-41d4-a716-446655440043,2025-12-11T12:00:00Z,IVALUA,EAI_PO_Export,INFO,PO export completed,Exported 75 POs to SAP,PO_EXPORT,,,PO,SUCCESS,,,count:75,0,,
