@@ -33,6 +33,7 @@ modules:
           srv-url: ${default-url}
     requires:
       - name: monitoring-dashboard-db
+      - name: monitoring-dashboard-auth
 
   # HANA Database Deployer
   - name: monitoring-dashboard-db-deployer
@@ -50,3 +51,11 @@ resources:
     parameters:
       service: hana
       service-plan: hdi-shared
+
+  # XSUAA Service for OAuth Authentication
+  - name: monitoring-dashboard-auth
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: xsuaa
+      service-plan: application
+      path: ./xs-security.json

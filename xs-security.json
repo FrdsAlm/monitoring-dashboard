@@ -1,0 +1,52 @@
+{
+    "xsappname": "monitoring-dashboard",
+    "tenant-mode": "dedicated",
+    "scopes": [
+        {
+            "name": "$XSAPPNAME.read",
+            "description": "Read access to monitoring data"
+        },
+        {
+            "name": "$XSAPPNAME.write",
+            "description": "Write access to create/update logs and stats"
+        },
+        {
+            "name": "$XSAPPNAME.admin",
+            "description": "Full administrative access"
+        }
+    ],
+    "role-templates": [
+        {
+            "name": "Viewer",
+            "description": "Read-only access to dashboard",
+            "scope-references": [
+                "$XSAPPNAME.read"
+            ]
+        },
+        {
+            "name": "Operator",
+            "description": "Can post logs and stats",
+            "scope-references": [
+                "$XSAPPNAME.read",
+                "$XSAPPNAME.write"
+            ]
+        },
+        {
+            "name": "Administrator",
+            "description": "Full access including config management",
+            "scope-references": [
+                "$XSAPPNAME.read",
+                "$XSAPPNAME.write",
+                "$XSAPPNAME.admin"
+            ]
+        }
+    ],
+    "oauth2-configuration": {
+        "credential-types": [
+            "binding-secret",
+            "x509"
+        ],
+        "token-validity": 43200,
+        "redirect-uris": []
+    }
+}
