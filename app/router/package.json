@@ -1,0 +1,14 @@
+{
+    "name": "monitoring-dashboard-router",
+    "version": "1.0.0",
+    "description": "App Router for authentication",
+    "dependencies": {
+        "@sap/approuter": "^16"
+    },
+    "scripts": {
+        "start": "node node_modules/@sap/approuter/approuter.js"
+    },
+    "engines": {
+        "node": ">=18"
+    }
+}

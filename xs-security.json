@@ -41,6 +41,29 @@
             ]
         }
     ],
+    "role-collections": [
+        {
+            "name": "Monitoring_Dashboard_Viewer",
+            "description": "View dashboard data",
+            "role-template-references": [
+                "$XSAPPNAME.Viewer"
+            ]
+        },
+        {
+            "name": "Monitoring_Dashboard_Operator",
+            "description": "View and post monitoring data",
+            "role-template-references": [
+                "$XSAPPNAME.Operator"
+            ]
+        },
+        {
+            "name": "Monitoring_Dashboard_Admin",
+            "description": "Full administrative access",
+            "role-template-references": [
+                "$XSAPPNAME.Administrator"
+            ]
+        }
+    ],
     "oauth2-configuration": {
         "credential-types": [
             "binding-secret",

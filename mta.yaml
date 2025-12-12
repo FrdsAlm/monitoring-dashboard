@@ -12,11 +12,32 @@ build-parameters:
         - npm ci
         - bash -c "cd app/react && npm ci && npm run build"
         - npx cds build --production
-        - bash -c "mkdir -p gen/srv/app && cp -r app/react/dist/* gen/srv/app/"
         - bash -c "cp srv/server.js gen/srv/"
+        - bash -c "cp -r app/react/dist/* app/router/"
 
 modules:
-  # CAP Backend Service (serves both API and static UI)
+  # App Router - Entry point for dashboard (handles user login)
+  - name: monitoring-dashboard-app
+    type: approuter.nodejs
+    path: app/router
+    parameters:
+      instances: 1
+      memory: 256M
+      disk-quota: 256M
+    build-parameters:
+      builder: npm
+      ignore:
+        - node_modules/
+    requires:
+      - name: monitoring-dashboard-auth
+      - name: srv-api
+        group: destinations
+        properties:
+          name: srv-api
+          url: ~{srv-url}
+          forwardAuthToken: true
+
+  # CAP Backend Service (API only - no static files)
   - name: monitoring-dashboard-srv
     type: nodejs
     path: gen/srv
