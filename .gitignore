@@ -39,3 +39,4 @@ app/assets/
 app/index.html
 app/*.js
 app/*.css
+srv/app/
