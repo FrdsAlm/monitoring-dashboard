@@ -413,6 +413,12 @@ body {
     cursor: pointer;
 }
 
+.filter-group input[type="checkbox"] {
+    min-width: auto;
+    width: auto;
+    margin: 0;
+}
+
 .filters-summary {
     margin-top: 0.75rem;
     font-size: 0.8rem;

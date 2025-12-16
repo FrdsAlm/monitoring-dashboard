@@ -193,11 +193,7 @@ export default function ExecutiveDashboard() {
     const sources = [...new Set(logs.map(l => l.sourceSystem).filter(Boolean))]
     const interfaces = [...new Set(logs.map(l => l.interfaceName).filter(Boolean))]
 
-    const totalErrors24h = systemHealth.reduce((sum, s) => sum + (s.last24hFailed || 0), 0)
-    const totalSuccess24h = systemHealth.reduce((sum, s) => sum + (s.last24hSuccess || 0), 0)
-    const overallSuccessRate = totalSuccess24h + totalErrors24h > 0
-        ? ((totalSuccess24h / (totalSuccess24h + totalErrors24h)) * 100).toFixed(1)
-        : 0
+
 
     const COLORS = ['#1F2F57', '#6091C3', '#A8A8A8']
 
@@ -252,23 +248,7 @@ export default function ExecutiveDashboard() {
                 </div>
             </section>
 
-            {/* Summary Stats */}
-            <section className="section">
-                <div className="summary-row">
-                    <div className="summary-card large">
-                        <div className="summary-value">{overallSuccessRate}%</div>
-                        <div className="summary-label">Overall Success Rate (24h)</div>
-                    </div>
-                    <div className="summary-card">
-                        <div className="summary-value success">{totalSuccess24h}</div>
-                        <div className="summary-label">Successful (24h)</div>
-                    </div>
-                    <div className="summary-card">
-                        <div className="summary-value error">{totalErrors24h}</div>
-                        <div className="summary-label">Failed (24h)</div>
-                    </div>
-                </div>
-            </section>
+
 
             {/* Charts Row */}
             <section className="section">
